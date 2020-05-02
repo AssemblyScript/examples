@@ -1,0 +1,11 @@
+{
+  "name": "@assemblyscript/sdk-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "http-server . -o -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}

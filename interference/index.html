@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><title>Interference effect - AssemblyScript</title><link rel="icon" href="https://assemblyscript.org/favicon.ico" type="image/x-icon"/><style>html, body{height: 100%; margin: 0; overflow: hidden; color: #111; background: #fff; font-family: sans-serif;}body{border-top: 2px solid #50ad7b;}h1{padding: 20px; font-size: 12pt; margin: 0;}a{color: #111; text-decoration: none;}a:hover{color: #0074C1; text-decoration: underline;}canvas{position: absolute; top: 60px; left: 20px; width: calc(100% - 40px); height: calc(100% - 80px); background: #aff;}</style><body><h1> <a href="https://github.com/ColinEberhardt/wasm-interference">Interference effect</a> in <a href="http://assemblyscript.org">AssemblyScript</a> ( <a href="https://github.com/AssemblyScript/examples/blob/master/interference/assembly/index.ts">source</a> )</h1>
+
+<canvas id="canvas"></canvas>
+<script>
+var step = 0.001;
+WebAssembly.instantiateStreaming(fetch("build/optimized.wasm"), { Math })
+.then(module => {
+  const exports = module.instance.exports;
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
+
+  var width, height, image;
+  function onresize() {
+    width = canvas.offsetWidth >>> 2;
+    height = canvas.offsetHeight >>> 2;
+    canvas.width = width;
+    canvas.height = height;
+    image = context.createImageData(width, height);
+    exports.resize(width, height);
+  }
+  onresize();
+  window.addEventListener("resize", onresize);
+
+  var tick = 0.0;
+  (function update() {
+    requestAnimationFrame(update);
+    exports.update(tick += step);
+    new Uint32Array(image.data.buffer).set(new Uint32Array(exports.memory.buffer, exports.offset, width * height));
+    context.putImageData(image, 0, 0);
+  })()
+});
+</script>
+
+<style>#warning{z-index: 10; position: absolute; top: 60px; left: 20px; width: calc(100% - 240px); height: calc(100% - 280px); background: rgba(0,0,0,0.95); text-align: center; color: #fff; padding: 100px; font-size: 200%; cursor: pointer;}</style><div id="warning"> <p style="color: #f00">EPILEPSY WARNING</p><p style="text-align: justify">A very small percentage of individuals may experience epileptic seizures when exposed to certain light patterns or flashing lights. Exposure to certain patterns or backgrounds on a computer screen may induce an epileptic seizure in these individuals. Certain conditions may induce previously undetected epileptic symptoms even in persons who have no history of prior seizures or epilepsy.</p><p style="text-align: justify">If you experience any of the following symptoms while viewing - dizziness, altered vision, eye or muscle twitches, loss of awareness, disorientation, any involuntary movement, or convulsions - IMMEDIATELY discontinue use and consult your physician.</p><p>(click to continue)</p></div><script>document.getElementById("warning").addEventListener("click", (event)=>{document.body.removeChild(document.getElementById("warning")); step=0.012});</script></body></html>
