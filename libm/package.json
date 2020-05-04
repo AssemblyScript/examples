@@ -1,0 +1,24 @@
+{
+  "name": "@assemblyscript/libm-example",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "asbuild": "npm run asbuild:libm && npm run asbuild:libmf",
+    "asbuild:libm": "asc assembly/libm.ts -O3 -b build/libm.wasm -t build/libm.wat --runtime none --validate",
+    "asbuild:libmf": "asc assembly/libmf.ts -O3 -b build/libmf.wasm -t build/libmf.wat --runtime none --validate",
+    "test": "node tests"
+  },
+  "files": [
+    "package.json",
+    "index.d.ts",
+    "index.js",
+    "build/*.wasm",
+    "README.md"
+  ],
+  "devDependencies": {
+    "assemblyscript": "latest"
+  }
+}

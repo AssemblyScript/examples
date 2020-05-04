@@ -1,6 +1,7 @@
 {
   "name": "@assemblyscript/mandelbrot-example",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --use Math=JSMath --runtime none --importMemory --sourceMap --debug --validate --measure",

@@ -45,11 +45,21 @@ These examples cover slightly higher level aspects, like working with managed ob
 
   <img src="./loader/preview.jpg" />
 
-## Other
+## AssemblyScript as a library
+
+Various WebAssembly or AssemblyScript features as a library.
+
+* [i64](./i64)<br />
+  Exposes WebAssembly's i64 operations to JavaScript using 32-bit integers (low and high bits).
+
+* [libm](./libm)<br />
+  Exposes AssemblyScript's math routines for double and single precision as a library.
+
+## Features
 
 General examples showing how to utilize specific AssemblyScript features.
 
-* [Browser SDK](./sdk)<br />
+* [Browser SDK](./sdk) ([demo](https://assemblyscript.github.io/examples/sdk/))<br />
   Shows how to use the browser SDK to run the AssemblyScript compiler in the browser.
 
   <img src="./sdk/preview.jpg" />

@@ -1,6 +1,7 @@
 {
   "name": "@assemblyscript/n-body-example",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "asbuild:optimized": "asc assembly/index.ts -b build/as_nbody.wasm -t build/as_nbody.wat -O3 --validate --runtime none --noAssert --importMemory",
