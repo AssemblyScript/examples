@@ -46,8 +46,8 @@ export function getMyArray(size: i32): Int32Array {
 
 // Example 5: Passing an array from JavaScript to WebAssembly.
 
-// Likewise, we can also allocate an array on the JavaScript side and pass it
-// its pointer to WebAssembly, then doing something with it.
+// Likewise, we can also allocate an array on the JavaScript side and pass its
+// pointer to WebAssembly, then doing something with it.
 
 // see: tests/index.js "Test for Example 5"
 

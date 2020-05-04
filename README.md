@@ -53,3 +53,6 @@ General examples showing how to utilize specific AssemblyScript features.
   Shows how to use the browser SDK to run the AssemblyScript compiler in the browser.
 
   <img src="./sdk/preview.jpg" />
+
+* [Compiler transforms](./transform)<br />
+  An example of using compiler transforms to hook into the compilation process.

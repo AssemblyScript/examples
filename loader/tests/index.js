@@ -121,29 +121,48 @@ const {
     player = new myModule.Game.Player(namePtr);
     __release(namePtr);
   }
-  console.log("  Player (new): " + __getString(player.toString()));
+
+  // Let's see how our player looks now by calling toString
+  {
+    const strPtr = player.toString();
+    console.log("  Player (new): " + __getString(strPtr));
+    __release(strPtr);
+  }
 
   // Move them and log again
-  player.move(10, 20);
-  console.log("  Player (moved): " + __getString(player.toString()));
+  {
+    player.move(10, 20);
+    const strPtr = player.toString();
+    console.log("  Player (moved): " + __getString(strPtr));
+    __release(strPtr);
+  }
 
   // Obtaining just the position. Note that we can `wrap` any pointer with
-  // the matching class within the object structure made by the loader.
+  // the matching class within the object structure made by the loader, and
+  // that a position's x and y properties are just basic values, not objects,
+  // so tracking references does not apply to them.
   {
-    const positionPtr = player.position; // calls a getter (implicit `return`)
+    const positionPtr = player.position; // implicit getter, retained for us
     const position = myModule.Game.Position.wrap(positionPtr);
     console.log("  Position (wrapped): " + position.x + "/" + position.y);
 
     position.x -= 100;
     position.y += 200;
-    console.log("  Position (moved): " + __getString(position.toString()));
 
-    __release(positionPtr); // we are done with the returned object
+    const strPtr = position.toString();
+    console.log("  Position (moved): " + __getString(strPtr));
+    __release(strPtr);
+
+    __release(positionPtr);
   }
 
   // Finish 'em
-  player.kill();
-  console.log("  Player (finished): " + __getString(player.toString()));
+  {
+    player.kill();
+    const strPtr = player.toString();
+    console.log("  Player (finished): " + __getString(strPtr));
+    __release(strPtr); // we are done with the returned object
+  }
 
   __release(player); // a tidy house, a tidy mind.
 }
