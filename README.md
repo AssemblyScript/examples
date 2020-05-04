@@ -45,7 +45,7 @@ These examples cover slightly higher level aspects, like working with managed ob
 
   <img src="./loader/preview.jpg" />
 
-## AssemblyScript as a library
+## Libraries
 
 Various WebAssembly or AssemblyScript features as a library.
 
@@ -66,3 +66,11 @@ General examples showing how to utilize specific AssemblyScript features.
 
 * [Compiler transforms](./transform)<br />
   An example of using compiler transforms to hook into the compilation process.
+
+## Additional resources
+
+* [Wasm By Example](https://wasmbyexample.dev/all-examples-list.html)<br />
+  A concise, hands-on introduction to WebAssembly using code snippets and annotated example programs. If you "learn best by doing", or just need a good starting point for a concept, this is the place for you.
+
+* [Built with AssemblyScript](https://docs.assemblyscript.org/community/built-with-assemblyscript)<br />
+  A list of more sophisticated open source projects using AssemblyScript.
