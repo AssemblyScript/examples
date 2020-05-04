@@ -6,7 +6,7 @@ on:
     - master
   pull_request:
   schedule:
-  - cron: '0 0 * * *'
+  - cron: '30 0 * * *'
 jobs:
   game-of-life:
     runs-on: ubuntu-latest
