@@ -1,0 +1,101 @@
+  
+name: Test
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+  schedule:
+  - cron: '0 0 * * *'
+jobs:
+  game-of-life:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd game-of-life
+        npm install
+        npm run asbuild
+  i64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd i64
+        npm install
+        npm run asbuild
+        npm test
+  interference:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd interference
+        npm install
+        npm run asbuild
+  libm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd libm
+        npm install
+        npm run asbuild
+        npm test
+  loader:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd loader
+        npm install
+        npm run asbuild
+        npm test
+  mandelbrot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd mandelbrot
+        npm run asbuild
+  n-body:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd n-body
+        npm install
+        npm run asbuild
+      # npm test
+  transform:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - run: |
+        cd transform
+        npm install
+        npm test
