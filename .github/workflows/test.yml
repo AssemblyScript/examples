@@ -75,6 +75,7 @@ jobs:
         node-version: current
     - run: |
         cd mandelbrot
+        npm install
         npm run asbuild
   n-body:
     runs-on: ubuntu-latest
