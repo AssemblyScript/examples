@@ -6,8 +6,8 @@
   "types": "index.d.ts",
   "scripts": {
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "asbuild:untouched": "asc assembly/i64.ts -t build/untouched.wat -b build/untouched.wasm --runtime none --validate --sourceMap --debug --measure",
-    "asbuild:optimized": "asc assembly/i64.ts -b build/optimized.wasm -t build/optimized.wat -d build/optimized.d.ts -O3 --runtime none --validate --sourceMap --measure",
+    "asbuild:untouched": "asc assembly/i64.ts -t build/untouched.wat -b build/untouched.wasm --runtime none --sourceMap --debug --measure",
+    "asbuild:optimized": "asc assembly/i64.ts -b build/optimized.wasm -t build/optimized.wat -d build/optimized.d.ts -O3 --runtime none --sourceMap --measure",
     "test": "node tests"
   },
   "files": [
