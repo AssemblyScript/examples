@@ -7,8 +7,8 @@
   "types": "index.d.ts",
   "scripts": {
     "asbuild": "npm run asbuild:libm && npm run asbuild:libmf",
-    "asbuild:libm": "asc assembly/libm.ts -O3 -b build/libm.wasm -t build/libm.wat --runtime none --validate",
-    "asbuild:libmf": "asc assembly/libmf.ts -O3 -b build/libmf.wasm -t build/libmf.wat --runtime none --validate",
+    "asbuild:libm": "asc assembly/libm.ts -O3 -b build/libm.wasm -t build/libm.wat --runtime none",
+    "asbuild:libmf": "asc assembly/libmf.ts -O3 -b build/libmf.wasm -t build/libmf.wat --runtime none",
     "test": "node tests"
   },
   "files": [
