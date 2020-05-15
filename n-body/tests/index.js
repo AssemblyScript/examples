@@ -2,13 +2,16 @@ const fs = require("fs");
 
 // Load WASM version
 const nbodyAS = require("../assembly/index.js");
-const nbodyRS = require("../rust/index.js");
+var nbodyRS;
+try {
+  nbodyRS = require("../rust/index.js");
+} catch (e) {}
 
-// Load ASMJS version
-var src = fs.readFileSync(__dirname + "/../build/as_nbody.asm.js", "utf8")
+// Load JS version
+var src = fs.readFileSync(__dirname + "/../build/as_nbody.js", "utf8")
             .replace(/const retasmFunc[^$]*$/g, "");
 
-const nbodyAsmJS = eval(src + ";asmFunc")({
+const nbodyAS_JS = eval(src + ";asmFunc")({
   Int8Array,
   Int16Array,
   Int32Array,
@@ -70,14 +73,16 @@ console.log("\nCOLD SERIES:\n");
 prologue("AssemblyScript WASM", steps);
 epilogue(test(nbodyAS, steps));
 
-prologue("AssemblyScript ASMJS", steps);
-epilogue(test(nbodyAsmJS, steps));
+prologue("AssemblyScript JS", steps);
+epilogue(test(nbodyAS_JS, steps));
 
 prologue("JS", steps);
 epilogue(test(nbodyJS, steps));
 
-prologue("Rust WASM", steps);
-epilogue(test(nbodyRS, steps));
+if (nbodyRS) {
+  prologue("Rust WASM", steps);
+  epilogue(test(nbodyRS, steps));
+}
 
 console.log("\nWARMED UP SERIES:\n");
 sleep(1000);
@@ -85,11 +90,13 @@ sleep(1000);
 prologue("AssemblyScript WASM", steps);
 epilogue(test(nbodyAS, steps));
 
-prologue("AssemblyScript ASMJS", steps);
-epilogue(test(nbodyAsmJS, steps));
+prologue("AssemblyScript JS", steps);
+epilogue(test(nbodyAS_JS, steps));
 
 prologue("JS", steps);
 epilogue(test(nbodyJS, steps));
 
-prologue("Rust WASM", steps);
-epilogue(test(nbodyRS, steps));
+if (nbodyRS) {
+  prologue("Rust WASM", steps);
+  epilogue(test(nbodyRS, steps));
+}

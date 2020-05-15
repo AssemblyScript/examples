@@ -5,7 +5,7 @@ const binaryen = require("binaryen");
 class MyTransform extends Transform {
   afterParse(parser) {
     this.log("[mytransform.js] afterParse called, baseDir = " + this.baseDir);
-    var sources = parser.program.sources;
+    var sources = this.program.sources;
     sources.forEach(source => this.log("  " + source.internalPath + " [" + SourceKind[source.sourceKind] + "]"));
   }
   afterInitialize(program) {
