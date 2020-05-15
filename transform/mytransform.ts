@@ -5,7 +5,7 @@ import * as binaryen from "binaryen";
 class MyTransform extends Transform {
   afterParse(parser: Parser): void {
     this.log("[mytransform.ts] afterParse called, baseDir = " + this.baseDir);
-    var sources = parser.program.sources;
+    var sources = this.program.sources;
     sources.forEach(source => this.log("  " + source.internalPath + " [" + SourceKind[source.sourceKind] + "]"));
   }
   afterInitialize(program: Program) {

@@ -15,7 +15,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd game-of-life
         npm install
         npm run asbuild
@@ -26,7 +27,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd i64
         npm install
         npm run asbuild
@@ -38,7 +40,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd interference
         npm install
         npm run asbuild
@@ -49,7 +52,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd libm
         npm install
         npm run asbuild
@@ -61,7 +65,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd loader
         npm install
         npm run asbuild
@@ -73,7 +78,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd mandelbrot
         npm install
         npm run asbuild
@@ -84,7 +90,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd n-body
         npm install
         npm run asbuild
@@ -96,7 +103,8 @@ jobs:
     - uses: dcodeIO/setup-node-nvm@master
       with:
         node-version: current
-    - run: |
+    - name: Test
+      run: |
         cd transform
         npm install
         npm test
