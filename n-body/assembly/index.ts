@@ -1,24 +1,26 @@
 // From The Computer Language Benchmarks Game
 // http://benchmarksgame.alioth.debian.org
 
-type float = f64; // interchangeable f32/f64 for testing
+// interchangeable f32/f64 which defined in "--use" flag.
+// @ts-ignore
+type real = USER_DEFINED_REAL;
 
-const SOLAR_MASS = <float>(4.0 * Math.PI * Math.PI);
-const DAYS_PER_YEAR: float = 365.24;
+const SOLAR_MASS: real = 4.0 * Math.PI * Math.PI;
+const DAYS_PER_YEAR: real = 365.24;
 
 class Body {
 
   constructor(
-    public x: float,
-    public y: float,
-    public z: float,
-    public vx: float,
-    public vy: float,
-    public vz: float,
-    public mass: float
+    public x: real,
+    public y: real,
+    public z: real,
+    public vx: real,
+    public vy: real,
+    public vz: real,
+    public mass: real
   ) {}
 
-  offsetMomentum(px: float, py: float, pz: float): this {
+  offsetMomentum(px: real, py: real, pz: real): this {
     this.vx = -px / SOLAR_MASS;
     this.vy = -py / SOLAR_MASS;
     this.vz = -pz / SOLAR_MASS;
@@ -83,9 +85,9 @@ function Neptune(): Body {
 class NBodySystem {
 
   constructor(public bodies: StaticArray<Body>) {
-    var px: float = 0.0;
-    var py: float = 0.0;
-    var pz: float = 0.0;
+    var px: real = 0.0;
+    var py: real = 0.0;
+    var pz: real = 0.0;
     var size = bodies.length;
     for (let i = 0; i < size; ++i) {
       let b = unchecked(bodies[i]);
@@ -97,7 +99,7 @@ class NBodySystem {
     unchecked(bodies[0]).offsetMomentum(px, py, pz);
   }
 
-  advance(dt: float): void {
+  advance(dt: real): void {
     var bodies = this.bodies;
     var size: u32 = bodies.length;
     // var buffer = changetype<usize>(bodies.buffer_);
@@ -124,7 +126,7 @@ class NBodySystem {
         let dz = iz - bodyj.z;
 
         let distanceSq = dx * dx + dy * dy + dz * dz;
-        let distance = <float>Math.sqrt(distanceSq);
+        let distance = Math.sqrt(distanceSq);
         let mag = dt / (distanceSq * distance);
 
         let bim = bodyim * mag;
@@ -149,8 +151,8 @@ class NBodySystem {
     }
   }
 
-  energy(): float {
-    var e: float = 0.0;
+  energy(): real {
+    var e: real = 0;
     var bodies = this.bodies;
 
     for (let i: u32 = 0, size: u32 = bodies.length; i < size; ++i) {
@@ -173,7 +175,7 @@ class NBodySystem {
         let dx = ix - bodyj.x;
         let dy = iy - bodyj.y;
         let dz = iz - bodyj.z;
-        let distance = <float>Math.sqrt(dx * dx + dy * dy + dz * dz);
+        let distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
         e -= bim * bodyj.mass / distance;
       }
     }
@@ -193,7 +195,7 @@ export function init(): void {
   ]);
 }
 
-export function step(): float {
+export function step(): real {
   system.advance(0.01);
   return system.energy();
 }
