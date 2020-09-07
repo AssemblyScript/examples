@@ -101,10 +101,10 @@ class NBodySystem {
 
   advance(dt: real): void {
     var bodies = this.bodies;
-    var size: u32 = bodies.length;
+    var size = bodies.length;
     // var buffer = changetype<usize>(bodies.buffer_);
 
-    for (let i: u32 = 0; i < size; ++i) {
+    for (let i = 0; i < size; ++i) {
       let bodyi = unchecked(bodies[i]);
       // let bodyi = load<Body>(buffer + i * sizeof<Body>(), 8);
 
@@ -117,7 +117,7 @@ class NBodySystem {
       let bivz = bodyi.vz;
 
       let bodyim = bodyi.mass;
-      for (let j: u32 = i + 1; j < size; ++j) {
+      for (let j = i + 1; j < size; ++j) {
         let bodyj = unchecked(bodies[j]);
         // let bodyj = load<Body>(buffer + j * sizeof<Body>(), 8);
 
@@ -155,7 +155,7 @@ class NBodySystem {
     var e: real = 0;
     var bodies = this.bodies;
 
-    for (let i: u32 = 0, size: u32 = bodies.length; i < size; ++i) {
+    for (let i = 0, size = bodies.length; i < size; ++i) {
       let bodyi = unchecked(bodies[i]);
 
       let ix = bodyi.x;
@@ -170,7 +170,7 @@ class NBodySystem {
 
       e += 0.5 * bim * (vx * vx + vy * vy + vz * vz);
 
-      for (let j: u32 = i + 1; j < size; ++j) {
+      for (let j = i + 1; j < size; ++j) {
         let bodyj = unchecked(bodies[j]);
         let dx = ix - bodyj.x;
         let dy = iy - bodyj.y;
@@ -200,8 +200,8 @@ export function step(): real {
   return system.energy();
 }
 
-export function bench(steps: u32): void {
-  for (let i: u32 = 0; i < steps; ++i) system.advance(0.01);
+export function bench(steps: i32): void {
+  for (let i = 0; i < steps; ++i) system.advance(0.01);
 }
 
 export function getBody(index: i32): Body | null {
