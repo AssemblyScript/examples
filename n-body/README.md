@@ -37,8 +37,8 @@ Benchmark
 
 ***Environment:***
 - MacBook Pro (15-inch, 2019)
-- macOS 10.15.6
-- node.js v14.9.0
+- macOS 10.15.7
+- node.js v15.0.1
 - rustc 1.46.0-nightly (f781babf8 2020-07-01)
 
 ***Results:***
