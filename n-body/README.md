@@ -45,9 +45,9 @@ Benchmark
 
 |        Target           |  Time, ***ms*** | Size, ***KB*** |
 |-------------------------|-----------------|----------------|
-| **AssemblyScript WASM** | **1612**        | **1.6**        |
-| AssemblyScript ASMJS    | 2509            | 10*            |
-| JavaScript              | 1911            | 5*             |
-| Rust WASM               | 1636            | 2              |
+| **AssemblyScript WASM** | **1589**        | **1.6**        |
+| AssemblyScript ASMJS    | 2522            | 10*            |
+| JavaScript              | 1948            | 5*             |
+| Rust WASM               | 1619            | 2              |
 
 ___* unminified___
