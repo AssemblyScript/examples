@@ -4,7 +4,7 @@ const myModule = require("../index");
 // Obtain the runtime helpers for
 const {
   // memory management
-  __allocString, __allocArray,
+  __newString, __newArray,
   // garbage collection
   __retain, __release,
   // and interop
@@ -32,7 +32,7 @@ const {
   console.log("Example 2:");
 
   // Allocate a string in the module's memory and retain a reference to our allocation
-  const ptr = __retain(__allocString("Hello world (I am a JavaScript string)"));
+  const ptr = __retain(__newString("Hello world (I am a JavaScript string)"));
 
   // Pass it to our WebAssembly export, which is going to print it using our custom console
   myModule.sayHello(ptr);
@@ -68,7 +68,7 @@ const {
   // Allocate a new array in WebAssembly memory and get a view on it. Note that
   // we have to specify the runtime id of the array type we want to allocate, so
   // we export its id (`idof<Int32Array>`) from the module to do so.
-  const ptr = __retain(__allocArray(myModule.Int32Array_ID, [ 1, 2, 3 ]));
+  const ptr = __retain(__newArray(myModule.Int32Array_ID, [ 1, 2, 3 ]));
   const view = __getArrayView(ptr);
   const copy = __getArray(ptr);
 
@@ -94,7 +94,7 @@ const {
   // Note: Allocating an array of strings or other objects will automatically
   // take care of retaining references to its elements, but the array itself
   // must be dealt with as usual.
-  const inPtr = __retain(__allocArray(myModule.ArrayOfStrings_ID, [ "hello", "world" ].map(__allocString)));
+  const inPtr = __retain(__newArray(myModule.ArrayOfStrings_ID, [ "hello", "world" ].map(__newString)));
 
   // Provide our array of lowercase strings to WebAssembly, and obtain the new
   // array of uppercase strings before printing it.
@@ -117,7 +117,7 @@ const {
   // let's call the `Player` constructor (this is also an allocation):
   let player;
   {
-    const namePtr = __retain(__allocString("Gordon Freeman"));
+    const namePtr = __retain(__newString("Gordon Freeman"));
     player = new myModule.Game.Player(namePtr);
     __release(namePtr);
   }
