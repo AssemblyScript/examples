@@ -23,7 +23,7 @@
   function simpleExample(asc) {
     const { text, binary } = asc.compileString(SOURCE_CODE, {
       optimizeLevel: 3,
-      runtime: "none"
+      runtime: "stub"
     });
     console.log(`>>> TEXT >>>\n${text}`);
     console.log(`>>> BINARY >>>\n${binary.length} bytes`);
@@ -37,7 +37,7 @@
     asc.main([
       "module.ts",
       "-O3",
-      "--runtime", "none",
+      "--runtime", "stub",
       "--binaryFile", "module.wasm",
       "--textFile", "module.wat",
       "--sourceMap"

@@ -24,4 +24,4 @@ Afterwards, run
 $> npm start
 ```
 
-to start a <a href="http://127.0.0.1:8080">local server</a>. Should also automatically launch a browser.
+to start a local server.
