@@ -4,14 +4,14 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "test:js": "asc assembly/index.ts --runtime none --transform ./mytransform.js",
-    "test:ts": "asc assembly/index.ts --runtime none --transform ./mytransform.ts",
-    "test:multi": "asc assembly/index.ts --runtime none --transform ./mytransform.js --transform ./mytransform.ts",
+    "test:js": "asc assembly/index.ts --runtime stub --transform ./mytransform.js",
+    "test:ts": "asc assembly/index.ts --runtime stub --transform ./mytransform.ts",
+    "test:multi": "asc assembly/index.ts --runtime stub --transform ./mytransform.js --transform ./mytransform.ts",
     "test": "npm run test:js && npm run test:ts && npm run test:multi"
   },
   "devDependencies": {
     "assemblyscript": "latest",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
   }
 }

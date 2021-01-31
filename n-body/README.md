@@ -24,7 +24,7 @@ Afterwards, run
 $> npm start
 ```
 
-to start a <a href="http://localhost:9080">local server</a>. Should also automatically launch a browser.
+to start a local server.
 
 To run the benchmark:
 

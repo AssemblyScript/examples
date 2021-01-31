@@ -4,13 +4,12 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --runtime none --debug",
-    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --runtime none --optimize",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --runtime stub --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --runtime stub --optimize",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "start": "http-server . -o -c-1"
+    "start": "npx serve"
   },
   "devDependencies": {
-    "assemblyscript": "latest",
-    "http-server": "^0.12.3"
+    "assemblyscript": "latest"
   }
 }
