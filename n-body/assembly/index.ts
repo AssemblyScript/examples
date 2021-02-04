@@ -1,26 +1,21 @@
 // From The Computer Language Benchmarks Game
 // http://benchmarksgame.alioth.debian.org
 
-// interchangeable f32/f64 which defined in "--use" flag.
-// @ts-ignore
-type real = USER_DEFINED_REAL;
-
-const SOLAR_MASS: real = 4.0 * Math.PI * Math.PI;
-const DAYS_PER_YEAR: real = 365.24;
+const SOLAR_MASS = 4.0 * Math.PI * Math.PI;
+const DAYS_PER_YEAR = 365.24;
 
 class Body {
-
   constructor(
-    public x: real,
-    public y: real,
-    public z: real,
-    public vx: real,
-    public vy: real,
-    public vz: real,
-    public mass: real
+    public x: f64,
+    public y: f64,
+    public z: f64,
+    public vx: f64,
+    public vy: f64,
+    public vz: f64,
+    public mass: f64
   ) {}
 
-  offsetMomentum(px: real, py: real, pz: real): this {
+  offsetMomentum(px: f64, py: f64, pz: f64): this {
     this.vx = -px / SOLAR_MASS;
     this.vy = -py / SOLAR_MASS;
     this.vz = -pz / SOLAR_MASS;
@@ -85,9 +80,9 @@ function Neptune(): Body {
 class NBodySystem {
 
   constructor(public bodies: StaticArray<Body>) {
-    var px: real = 0.0;
-    var py: real = 0.0;
-    var pz: real = 0.0;
+    var px = 0.0;
+    var py = 0.0;
+    var pz = 0.0;
     var size = bodies.length;
     for (let i = 0; i < size; ++i) {
       let b = unchecked(bodies[i]);
@@ -99,7 +94,7 @@ class NBodySystem {
     unchecked(bodies[0]).offsetMomentum(px, py, pz);
   }
 
-  advance(dt: real): void {
+  advance(dt: f64): void {
     var bodies = this.bodies;
     var size = bodies.length;
     // var buffer = changetype<usize>(bodies.buffer_);
@@ -151,8 +146,8 @@ class NBodySystem {
     }
   }
 
-  energy(): real {
-    var e: real = 0;
+  energy(): f64 {
+    var e = 0.0;
     var bodies = this.bodies;
 
     for (let i = 0, size = bodies.length; i < size; ++i) {
@@ -195,7 +190,7 @@ export function init(): void {
   ]);
 }
 
-export function step(): real {
+export function step(): f64 {
   system.advance(0.01);
   return system.energy();
 }
