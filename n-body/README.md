@@ -37,17 +37,17 @@ Benchmark
 
 ***Environment:***
 - MacBook Pro (15-inch, 2019)
-- macOS 10.15.7
-- node.js v15.0.1
-- rustc 1.46.0-nightly (f781babf8 2020-07-01)
+- macOS 11.2
+- node.js v15.8.0
+- rustc 1.51.0-nightly (b12290861 2021-01-29)
 
 ***Results:***
 
 |        Target           |  Time, ***ms*** | Size, ***KB*** |
 |-------------------------|-----------------|----------------|
-| **AssemblyScript WASM** | **1589**        | **1.6**        |
-| AssemblyScript ASMJS    | 2522            | 10*            |
-| JavaScript              | 1948            | 5*             |
-| Rust WASM               | 1619            | 2              |
+| **AssemblyScript WASM** | **1633**        | **1.7**        |
+| AssemblyScript ASMJS    | 2579            | 9*             |
+| JavaScript              | 1933            | 5*             |
+| Rust WASM               | 1642            | 2              |
 
 ___* unminified___
