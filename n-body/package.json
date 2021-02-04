@@ -10,12 +10,11 @@
     "tsbuild": "tsc -p assembly -t ES2017 -m commonjs --outDir build",
     "rsbuild": "cd rust && RUSTFLAGS='-C link-arg=-s' cargo +nightly build --release",
     "build": "npm run asbuild && npm run tsbuild && npm run rsbuild",
-    "start": "http-server . -o -c-1",
+    "start": "npx serve",
     "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc tests"
   },
   "devDependencies": {
     "assemblyscript": "latest",
-    "http-server": "^0.12.3",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   }
 }
