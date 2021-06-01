@@ -1,7 +1,7 @@
 ![](https://avatars1.githubusercontent.com/u/28916798?s=64) AssemblyScript Examples
 =======================
 
-[![Actions Status](https://github.com/AssemblyScript/examples/workflows/Test/badge.svg?branch=master)](https://github.com/AssemblyScript/examples/actions)
+[![Actions Status](https://github.com/AssemblyScript/examples/workflows/Test/badge.svg?branch=main)](https://github.com/AssemblyScript/examples/actions)
 
 ## Instructions
 
