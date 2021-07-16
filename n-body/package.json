@@ -11,7 +11,7 @@
     "rsbuild": "cd rust && RUSTFLAGS='-C link-arg=-s' cargo +nightly build --release",
     "build": "npm run asbuild && npm run tsbuild && npm run rsbuild",
     "start": "npx serve",
-    "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc tests"
+    "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --no-liftoff --expose-gc tests"
   },
   "devDependencies": {
     "assemblyscript": "latest",
