@@ -108,3 +108,16 @@ jobs:
         cd transform
         npm install
         npm test
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - name: Test
+      run: |
+        cd parse
+        npm install
+        npm run build
+        npm test
