@@ -7,14 +7,7 @@ let nbodyRS;
 try { nbodyRS = require("../rust/index.js"); } catch (e) {}
 
 // Load JS version
-const jsSource = fs.readFileSync(__dirname + "/../build/index.js", "utf8");
-const scopeJS = {
-  require: () => {},
-  exports: {}
-};
-const nbodyJS = new Function(
-  ...Object.keys(scopeJS).concat(jsSource + "\nreturn exports"))(...Object.values(scopeJS)
-);
+const nbodyJS = require("../build/index.js");
 
 function gcCollect() {
   if (global.gc) {
