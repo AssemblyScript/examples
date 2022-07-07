@@ -1,40 +1,19 @@
 const fs = require("fs");
 
-// Load WASM version
+// Load AssemblyScript version
 const nbodyAS = require("../assembly/index.js");
-var nbodyRS;
-try {
-  nbodyRS = require("../rust/index.js");
-} catch (e) {}
+// Load Rust/wasm version
+let nbodyRS;
+try { nbodyRS = require("../rust/index.js"); } catch (e) {}
 
 // Load JS version
-var src = fs.readFileSync(__dirname + "/../build/as_nbody.js", "utf8")
-            .replace(/const retasmFunc[^$]*$/g, "");
-
-const nbodyAS_JS = eval(src + ";asmFunc")({
-  Int8Array,
-  Int16Array,
-  Int32Array,
-  Uint8Array,
-  Uint16Array,
-  Uint32Array,
-  Float32Array,
-  Float64Array,
-  Math
-}, {
-  abort: () => { throw Error(); }
-}, new ArrayBuffer(0x10000));
-
-// Load JS version
-src = fs.readFileSync(__dirname + "/../build/index.js", "utf8");
+const jsSource = fs.readFileSync(__dirname + "/../build/index.js", "utf8");
 const scopeJS = {
-  require:   () => {},
-  exports:   {},
-  unchecked: expr => expr
+  require: () => {},
+  exports: {}
 };
-
 const nbodyJS = new Function(
-  ...Object.keys(scopeJS).concat(src + "\nreturn exports"))(...Object.values(scopeJS)
+  ...Object.keys(scopeJS).concat(jsSource + "\nreturn exports"))(...Object.values(scopeJS)
 );
 
 function gcCollect() {
@@ -73,9 +52,6 @@ console.log("\nCOLD SERIES:\n");
 prologue("AssemblyScript WASM", steps);
 epilogue(test(nbodyAS, steps));
 
-prologue("AssemblyScript JS", steps);
-epilogue(test(nbodyAS_JS, steps));
-
 prologue("JS", steps);
 epilogue(test(nbodyJS, steps));
 
@@ -89,9 +65,6 @@ sleep(1000);
 
 prologue("AssemblyScript WASM", steps);
 epilogue(test(nbodyAS, steps));
-
-prologue("AssemblyScript JS", steps);
-epilogue(test(nbodyAS_JS, steps));
 
 prologue("JS", steps);
 epilogue(test(nbodyJS, steps));

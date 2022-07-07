@@ -1,0 +1,17 @@
+{
+  "options": {
+    "runtime": "stub",
+    "importMemory": true,
+    "sourceMap": true
+  },
+  "targets": {
+    "wasm": {
+      "outFile": "build/as_nbody.wasm",
+      "textFile": "build/as_nbody.wat",
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": true,
+      "noAssert": true
+    }
+  }
+}
