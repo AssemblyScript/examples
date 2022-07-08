@@ -30,39 +30,29 @@ function test(nbody, steps) {
   return t;
 }
 
-var steps = process.argv.length > 2 ? parseInt(process.argv[2], 10) : 20000000;
+const steps = process.argv.length > 2
+  ? parseInt(process.argv[2], 10)
+  : 20000000;
 
-function prologue(name, steps) {
-  console.log("Performing " + steps + " steps (" + name + ") ...");
-}
-
-function epilogue(time) {
-  console.log("Took " + (time[0] * 1e3 + time[1] / 1e6) + "ms");
+function bench(name, fn) {
+  console.log(`Performing ${steps} steps (${name}) ...`);
+  const time = test(fn, steps);
+  console.log(`Took ${(time[0] * 1e3 + time[1] / 1e6).toFixed(0)} ms`);
 }
 
 console.log("\nCOLD SERIES:\n");
 
-prologue("AssemblyScript WASM", steps);
-epilogue(test(nbodyAS, steps));
-
-prologue("JS", steps);
-epilogue(test(nbodyJS, steps));
-
+bench("AssemblyScript WASM", nbodyAS);
+bench("JS", nbodyJS);
 if (nbodyRS) {
-  prologue("Rust WASM", steps);
-  epilogue(test(nbodyRS, steps));
+  bench("Rust WASM", nbodyRS);
 }
 
 console.log("\nWARMED UP SERIES:\n");
 sleep(1000);
 
-prologue("AssemblyScript WASM", steps);
-epilogue(test(nbodyAS, steps));
-
-prologue("JS", steps);
-epilogue(test(nbodyJS, steps));
-
+bench("AssemblyScript WASM", nbodyAS);
+bench("JS", nbodyJS);
 if (nbodyRS) {
-  prologue("Rust WASM", steps);
-  epilogue(test(nbodyRS, steps));
+  bench("Rust WASM", nbodyRS);
 }
