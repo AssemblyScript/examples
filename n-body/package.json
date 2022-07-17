@@ -4,10 +4,9 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "asbuild:wasm": "asc assembly/index.ts -b build/as_nbody.wasm -t build/as_nbody.wat -O3 --runtime stub --noAssert --importMemory",
-    "asbuild:js": "asc assembly/index.ts -j build/as_nbody.js -O3 --runtime stub --noAssert && node scripts/postprocess-js",
-    "asbuild": "npm run asbuild:wasm && npm run asbuild:js",
-    "tsbuild": "tsc -p assembly -t ES2017 -m commonjs --outDir build",
+    "asbuild:wasm": "asc assembly/index.ts --target wasm",
+    "asbuild": "npm run asbuild:wasm",
+    "tsbuild": "tsc -p assembly -t esnext -m commonjs --outDir build && node scripts/postprocess",
     "rsbuild": "cd rust && RUSTFLAGS='-C link-arg=-s' cargo +nightly build --release",
     "build": "npm run asbuild && npm run tsbuild && npm run rsbuild",
     "start": "npx serve",
@@ -15,6 +14,6 @@
   },
   "devDependencies": {
     "assemblyscript": "latest",
-    "typescript": "^3.9.7"
+    "typescript": "^4.7.4"
   }
 }
