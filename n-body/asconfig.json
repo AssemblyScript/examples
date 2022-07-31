@@ -1,7 +1,8 @@
 {
   "options": {
     "runtime": "stub",
-    "importMemory": true,
+    "initialMemory": 17,
+    "noExportMemory": true,
     "sourceMap": true
   },
   "targets": {
