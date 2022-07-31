@@ -51,6 +51,6 @@ export function computeLine(y: u32, width: u32, height: u32, limit: u32): void {
 
 /** Clamps a value between the given minimum and maximum. */
 @inline
-function clamp<T>(value: T, minValue: T, maxValue: T): T {
+function clamp<T extends number>(value: T, minValue: T, maxValue: T): T {
   return min(max(value, minValue), maxValue);
 }
