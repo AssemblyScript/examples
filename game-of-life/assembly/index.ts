@@ -6,18 +6,21 @@ import { BGR_ALIVE, BGR_DEAD, BIT_ROT } from "./config";
 var width: i32, height: i32, offset: i32;
 
 /** Gets an input pixel in the range [0, s]. */
+// @ts-ignore: decorator
 @inline
 function get(x: u32, y: u32): u32 {
   return load<u32>((y * width + x) << 2);
 }
 
 /** Sets an output pixel in the range [s, 2*s]. */
+// @ts-ignore: decorator
 @inline
 function set(x: u32, y: u32, v: u32): void {
   store<u32>((offset + y * width + x) << 2, v);
 }
 
 /** Sets an output pixel in the range [s, 2*s] while fading it out. */
+// @ts-ignore: decorator
 @inline
 function rot(x: u32, y: u32, v: u32): void {
   var alpha = max<i32>((v >> 24) - BIT_ROT, 0);
