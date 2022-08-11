@@ -2,7 +2,6 @@
   "options": {
     "runtime": "stub",
     "initialMemory": 17,
-    "noExportMemory": true,
     "sourceMap": true
   },
   "targets": {

@@ -41,8 +41,7 @@ fetch("build/as_nbody.wasm")
 .then(response => response.arrayBuffer())
 .then(buffer => WebAssembly.instantiate(buffer, {
   env: {
-    memory: new WebAssembly.Memory({ initial: 1 }),
-    abort: function() { throw Error("abort called"); }
+    abort() { throw Error("abort called"); }
   }
 }))
 .then(module => {
