@@ -1,25 +1,25 @@
 {
+  "options": {
+    "runtime": "stub",
+    "sourceMap": true,
+    "measure": true
+  },
   "targets": {
-    "options": {
-      "runtime": "stub",
-      "sourceMap": true,
-      "measure": true
-    },
     "debug": {
-      "outFile": "build/untouched.wasm",
-      "textFile": "build/untouched.wat",
+      "outFile": "build/debug.wasm",
+      "textFile": "build/debug.wat",
       "use": "Math=JSMath",
       "importMemory": true,
       "debug": true
     },
     "release": {
-      "outFile": "build/optimized.wasm",
-      "textFile": "build/optimized.wat",
+      "outFile": "build/release.wasm",
+      "textFile": "build/release.wat",
       "use": "Math=JSMath",
       "importMemory": true,
       "optimizeLevel": 3,
-      "converge": false,
       "shrinkLevel": 0,
+      "converge": false,
       "noAssert": false
     }
   }
