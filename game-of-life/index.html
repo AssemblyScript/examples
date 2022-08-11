@@ -64,14 +64,14 @@ fetch("build/optimized.wasm")
 .then(buffer => WebAssembly.instantiate(buffer, {
   env: {
     memory,
-    abort: function() {}
+    abort: function() {},
+    "Math.random": Math.random
   },
   config: {
     BGR_ALIVE : rgb2bgr(RGB_ALIVE) | 1, // little endian, LSB must be set
     BGR_DEAD  : rgb2bgr(RGB_DEAD) & ~1, // little endian, LSB must not be set
     BIT_ROT
   },
-  Math
 }))
 .then(module => {
   var exports = module.instance.exports;
