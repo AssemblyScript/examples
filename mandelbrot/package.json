@@ -4,9 +4,9 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "asbuild:untouched": "asc assembly/index.ts -o build/untouched.wasm -t build/untouched.wat --use Math=JSMath --runtime stub --importMemory --sourceMap --debug --measure",
-    "asbuild:optimized": "asc assembly/index.ts -o build/optimized.wasm -t build/optimized.wat --use Math=JSMath --runtime stub -O3 --importMemory --sourceMap --measure",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
     "start": "npx serve"
   },
   "devDependencies": {
