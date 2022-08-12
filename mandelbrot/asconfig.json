@@ -1,0 +1,23 @@
+{
+  "options": {
+    "runtime": "stub",
+    "use": "Math=JSMath",
+    "importMemory": true,
+    "sourceMap": true,
+    "measure": true
+  },
+  "targets": {
+    "debug": {
+      "outFile": "build/debug.wasm",
+      "textFile": "build/debug.wat",
+      "debug": true
+    },
+    "release": {
+      "outFile": "build/release.wasm",
+      "textFile": "build/release.wat",
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "noAssert": true
+    }
+  }
+}
