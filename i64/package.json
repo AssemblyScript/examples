@@ -5,15 +5,15 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "asbuild:untouched": "asc assembly/i64.ts -t build/untouched.wat -o build/untouched.wasm --runtime stub --sourceMap --debug --measure",
-    "asbuild:optimized": "asc assembly/i64.ts -t build/optimized.wat -o build/optimized.wasm -O3 --runtime stub --sourceMap --measure",
+    "asbuild:debug": "asc --target debug",
+    "asbuild:release": "asc --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
     "test": "node tests"
   },
   "files": [
     "assembly/",
-    "build/optimized.wasm",
-    "build/optimized.wasm.map",
+    "build/release.wasm",
+    "build/release.wasm.map",
     "index.d.ts",
     "index.js",
     "README.md"
